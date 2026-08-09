@@ -38,7 +38,7 @@ export default function Contact() {
             </a>
           </div>
 
-          <div className="relative mt-10 flex items-center justify-center gap-4">
+          <div className="relative mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href={profile.github}
               target="_blank"
