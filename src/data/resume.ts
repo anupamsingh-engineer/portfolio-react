@@ -15,8 +15,8 @@ export const profile = {
   phone: '+91 70651-69819',
   github: 'https://github.com/anupamsingh-engineer',
   githubHandle: 'anupamsingh-engineer',
-  linkedin: 'https://linkedin.com/in/anupam-singh88',
-  linkedinHandle: 'anupam-singh88',
+  linkedin: 'https://www.linkedin.com/in/anupamsinghdev',
+  linkedinHandle: 'anupamsinghdev',
   site: 'https://anupam-mern-portfolio.vercel.app',
   resumeUrl: '/Anupam_Singh_Resume.pdf',
   summary:
@@ -136,21 +136,7 @@ export type Project = {
 }
 
 export const projects: Project[] = [
-  {
-    name: 'Blogify',
-    tagline: 'Full-Stack Microservices Blog Platform',
-    description: [
-      'Architected and deployed a production microservices platform of **4 independently deployable services** (API gateway, user, blog, AI) with strict per-service data ownership across MongoDB and PostgreSQL, communicating via REST, a **RabbitMQ event backbone** (3 durable topic exchanges), and real-time WebSockets.',
-      'Built a stateless JWT authentication system with **refresh-token rotation and reuse detection**, Redis-backed instant revocation, CSRF protection, and RBAC; implemented the **circuit breaker pattern (Opossum)** with a fail-open strategy across Redis, RabbitMQ, and inter-service calls.',
-      'Containerized a **12-container stack** via Docker Compose on AWS EC2 with GitHub Actions CI/CD, and instrumented every service with **OpenTelemetry tracing (Tempo)**, Prometheus metrics, and Loki logging correlated via propagated request IDs.',
-    ],
-    tech: ['React 19', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'RabbitMQ', 'Redis', 'Docker', 'AWS', 'Prometheus', 'Grafana'],
-    githubUrl: 'https://github.com/anupamsingh-engineer/blogify-microservices-app',
-    videos: [
-      { label: 'Product Walkthrough', url: 'https://drive.google.com/file/d/1NN2UMVwcI6mdU0oE1oAT_q8a_lekt8Lg/view?usp=sharing' },
-    ],
-    accent: 'violet',
-  },
+
   {
     name: 'NeoDrive',
     tagline: 'Cloud File Storage Platform',
@@ -166,6 +152,21 @@ export const projects: Project[] = [
       { label: 'Architecture Walkthrough', url: 'https://drive.google.com/file/d/1YF8-X5a8wxpagEOA-dA0iYF4nyTSeI6H/view?usp=sharing' },
     ],
     accent: 'cyan',
+  },
+    {
+    name: 'Blogify',
+    tagline: 'Full-Stack Microservices Blog Platform',
+    description: [
+      'Architected and deployed a production microservices platform of **4 independently deployable services** (API gateway, user, blog, AI) with strict per-service data ownership across MongoDB and PostgreSQL, communicating via REST, a **RabbitMQ event backbone** (3 durable topic exchanges), and real-time WebSockets.',
+      'Built a stateless JWT authentication system with **refresh-token rotation and reuse detection**, Redis-backed instant revocation, CSRF protection, and RBAC; implemented the **circuit breaker pattern (Opossum)** with a fail-open strategy across Redis, RabbitMQ, and inter-service calls.',
+      'Containerized a **12-container stack** via Docker Compose on AWS EC2 with GitHub Actions CI/CD, and instrumented every service with **OpenTelemetry tracing (Tempo)**, Prometheus metrics, and Loki logging correlated via propagated request IDs.',
+    ],
+    tech: ['React 19', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'RabbitMQ', 'Redis', 'Docker', 'AWS', 'Prometheus', 'Grafana'],
+    githubUrl: 'https://github.com/anupamsingh-engineer/blogify-microservices-app',
+    videos: [
+      { label: 'Product Walkthrough', url: 'https://drive.google.com/file/d/1NN2UMVwcI6mdU0oE1oAT_q8a_lekt8Lg/view?usp=sharing' },
+    ],
+    accent: 'violet',
   },
 ]
 

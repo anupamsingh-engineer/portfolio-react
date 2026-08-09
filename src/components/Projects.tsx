@@ -41,7 +41,7 @@ function VideoThumb({
       type="button"
       onClick={onPlay}
       aria-label={`Play video: ${video.label}`}
-      className="group/video relative aspect-video overflow-hidden rounded-xl border border-edge/10 bg-ink-800 text-left"
+      className="group/video relative aspect-video w-full overflow-hidden rounded-xl border border-edge/10 bg-ink-800 text-left"
     >
       {thumb && !imgFailed ? (
         <img
@@ -173,11 +173,7 @@ function ProjectCard({
       </div>
 
       {project.videos && project.videos.length > 0 && (
-        <div
-          className={`relative mt-5 grid gap-3 border-t border-edge/[0.06] pt-5 ${
-            project.videos.length > 1 ? 'grid-cols-2' : 'grid-cols-1'
-          }`}
-        >
+        <div className="relative mt-5 grid grid-cols-[repeat(auto-fit,minmax(140px,160px))] gap-3 border-t border-edge/[0.06] pt-5">
           {project.videos.map((v) => (
             <VideoThumb key={v.label} video={v} accent={accent} onPlay={() => onPlayVideo(v)} />
           ))}
