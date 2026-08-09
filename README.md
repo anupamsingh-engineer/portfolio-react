@@ -1,38 +1,51 @@
-# Dynamic Portfolio Project
+# Anupam Singh — Portfolio
 
-## URL
-https://anupam-mern-portfolio.vercel.app/
+A dark, animated, single-page developer portfolio built with React 18, TypeScript, Vite, Tailwind CSS, and Framer Motion.
 
-![image](https://github.com/anupam-singh88/portfolio-react/assets/89381022/4bb36ab1-e2c0-4a26-9239-c802ef33f339)
+## Run it locally
 
+```bash
+npm install
+npm run dev
+```
 
-## Introduction
+Open http://localhost:5173.
 
-This is a dynamic portfolio website built with ReactJS. It showcases my skills, projects, and experiences. The website is completely responsive and allows users to add information directly to a JSON file, from which data will be updated at all centers.
+## Edit your content
 
-## Getting Started
+Everything on the page — name, summary, experience bullets, projects, skills, education, contact links — lives in **one file**:
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+```
+src/data/resume.ts
+```
 
-### Prerequisites
+Edit that file and the whole site updates. No CMS, no database.
 
-Before you begin, ensure you have met the following requirements:
+A few things worth doing before you deploy:
 
-- You have installed the latest version of [Node.js and npm](https://nodejs.org/en/download/)
+- **Resume PDF**: the "Resume" button in the hero links to `/Anupam_Singh_Resume.pdf`. Drop your resume PDF into the `public/` folder with that exact name (or update `profile.resumeUrl` in `src/data/resume.ts`).
+- **Project links**: `projects[].liveUrl` and `projects[].githubUrl` in `src/data/resume.ts` currently point at placeholders — swap in the real repo/live URLs for Blogify and NeoDrive.
+- **Favicon**: `public/favicon.svg` is a simple placeholder "A" mark — swap it for your own if you'd like.
 
-### Installing and Running
+## Build for production
 
-1. Install NPM packages
-   ```
-   npm install
-   ```
-2. Start the server
-   ```
-   npm start
-   ```
+```bash
+npm run build   # outputs to dist/
+npm run preview # preview the production build locally
+```
 
-## Usage
+## Deploy
 
-To update the portfolio with your information, simply update the `resumedata.js` file in the `src` directory.
+The `dist/` folder is a static site — deploy it anywhere static hosting is supported:
 
-The website will automatically update to reflect the changes in the `data.json` file.
+- **Vercel**: import the repo, framework preset "Vite", no config needed.
+- **Netlify**: build command `npm run build`, publish directory `dist`.
+- **GitHub Pages / S3 / CloudFront**: upload the contents of `dist/` after building.
+
+## Stack
+
+- React 18 + TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion (scroll reveals, page transitions, hover interactions)
+- lucide-react (icons)
