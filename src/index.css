@@ -73,6 +73,9 @@
 
   html {
     scroll-behavior: smooth;
+    /* Offsets anchor jumps so section headings don't land underneath the
+       fixed header (h-16 mobile / h-20 desktop). */
+    scroll-padding-top: 6rem;
   }
 
   body {

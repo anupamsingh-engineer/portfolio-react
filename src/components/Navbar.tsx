@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowUpRight, FileDown } from 'lucide-react'
 import { navLinks, profile } from '../data/resume'
 import { useActiveSection } from '../hooks/useActiveSection'
+import { smoothScrollTo } from '../utils/smoothScrollTo'
 import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
@@ -18,6 +19,21 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
+  function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, hash: string) {
+    e.preventDefault()
+    document.body.style.overflow = ''
+    setOpen(false)
+    const target = document.getElementById(hash.replace('#', ''))
+    if (target) smoothScrollTo(target.getBoundingClientRect().top + window.scrollY - 96)
+  }
 
   return (
     <>
@@ -44,6 +60,7 @@ export default function Navbar() {
                 <li key={link.href}>
                   <a
                     href={link.href}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                       isActive ? 'text-mist-50' : 'text-mist-400 hover:text-mist-100'
                     }`}
@@ -95,13 +112,24 @@ export default function Navbar() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="block rounded-lg px-3 py-3 text-base font-medium text-mist-200 hover:bg-surface/[0.05]"
                   >
                     {link.label}
                   </a>
                 </li>
               ))}
+              <li>
+                <a
+                  href={profile.resumeUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-center gap-2 rounded-lg border border-edge/10 px-3 py-3 text-base font-medium text-mist-200 hover:bg-surface/[0.05]"
+                >
+                  Resume <FileDown size={16} />
+                </a>
+              </li>
               <li>
                 <a
                   href={`mailto:${profile.email}`}
