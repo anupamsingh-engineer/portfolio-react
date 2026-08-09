@@ -1,9 +1,11 @@
 import { useRef, useState, type MouseEvent } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Github, Check } from 'lucide-react'
+import { ArrowUpRight, Github, Check, Play } from 'lucide-react'
 import { projects, type Project } from '../data/resume'
 import { formatBold } from '../utils/formatBold'
+import { driveThumbnail } from '../utils/driveEmbed'
 import SectionHeading from './SectionHeading'
+import VideoModal, { type ActiveVideo } from './VideoModal'
 
 const accentMap = {
   violet: {
@@ -22,7 +24,61 @@ const accentMap = {
   },
 } as const
 
-function ProjectCard({ project, i }: { project: Project; i: number }) {
+function VideoThumb({
+  video,
+  accent,
+  onPlay,
+}: {
+  video: { label: string; url: string }
+  accent: (typeof accentMap)[keyof typeof accentMap]
+  onPlay: () => void
+}) {
+  const [imgFailed, setImgFailed] = useState(false)
+  const thumb = driveThumbnail(video.url)
+
+  return (
+    <button
+      type="button"
+      onClick={onPlay}
+      aria-label={`Play video: ${video.label}`}
+      className="group/video relative aspect-video overflow-hidden rounded-xl border border-edge/10 bg-ink-800 text-left"
+    >
+      {thumb && !imgFailed ? (
+        <img
+          src={thumb}
+          alt=""
+          loading="lazy"
+          onError={() => setImgFailed(true)}
+          className="h-full w-full object-cover transition-transform duration-300 group-hover/video:scale-105"
+        />
+      ) : (
+        <div className={`h-full w-full bg-gradient-to-br ${accent.glow} to-ink-900`} />
+      )}
+
+      <div className="absolute inset-0 bg-ink-950/35 transition-colors duration-300 group-hover/video:bg-ink-950/15" />
+
+      <span className="absolute inset-0 flex items-center justify-center">
+        <span className="flex h-11 w-11 items-center justify-center rounded-full bg-mist-50/95 text-ink-950 shadow-lg transition-transform duration-300 group-hover/video:scale-110">
+          <Play size={16} fill="currentColor" className="ml-0.5" />
+        </span>
+      </span>
+
+      <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-950/90 to-transparent px-2.5 pb-2 pt-5 text-xs font-medium text-mist-50">
+        {video.label}
+      </span>
+    </button>
+  )
+}
+
+function ProjectCard({
+  project,
+  i,
+  onPlayVideo,
+}: {
+  project: Project
+  i: number
+  onPlayVideo: (video: ActiveVideo) => void
+}) {
   const ref = useRef<HTMLDivElement>(null)
   const [style, setStyle] = useState({})
   const accent = accentMap[project.accent]
@@ -115,21 +171,37 @@ function ProjectCard({ project, i }: { project: Project; i: number }) {
           </span>
         ))}
       </div>
+
+      {project.videos && project.videos.length > 0 && (
+        <div
+          className={`relative mt-5 grid gap-3 border-t border-edge/[0.06] pt-5 ${
+            project.videos.length > 1 ? 'grid-cols-2' : 'grid-cols-1'
+          }`}
+        >
+          {project.videos.map((v) => (
+            <VideoThumb key={v.label} video={v} accent={accent} onPlay={() => onPlayVideo(v)} />
+          ))}
+        </div>
+      )}
     </motion.div>
   )
 }
 
 export default function Projects() {
+  const [activeVideo, setActiveVideo] = useState<ActiveVideo>(null)
+
   return (
     <section id="projects" className="relative py-28">
       <div className="container-px mx-auto max-w-6xl">
         <SectionHeading index="03" label="Projects" title="Things I've built end-to-end" />
         <div className="grid gap-7 lg:grid-cols-2">
           {projects.map((p, i) => (
-            <ProjectCard key={p.name} project={p} i={i} />
+            <ProjectCard key={p.name} project={p} i={i} onPlayVideo={setActiveVideo} />
           ))}
         </div>
       </div>
+
+      <VideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />
     </section>
   )
 }

@@ -13,8 +13,8 @@ export const profile = {
   location: 'Faridabad, India',
   email: 'anupamsingh2389@gmail.com',
   phone: '+91 70651-69819',
-  github: 'https://github.com/anupam-singh88',
-  githubHandle: 'anupam-singh88',
+  github: 'https://github.com/anupamsingh-engineer',
+  githubHandle: 'anupamsingh-engineer',
   linkedin: 'https://linkedin.com/in/anupam-singh88',
   linkedinHandle: 'anupam-singh88',
   site: 'https://anupam-mern-portfolio.vercel.app',
@@ -50,6 +50,8 @@ export type Experience = {
   /** Use for simpler, ungrouped roles. */
   highlights?: string[]
   tech: string[]
+  /** Product/company links relevant to this role (e.g. the platforms shipped). */
+  links?: { label: string; url: string }[]
 }
 
 export const experience: Experience[] = [
@@ -101,6 +103,10 @@ export const experience: Experience[] = [
       },
     ],
     tech: ['NestJS', 'React 18', 'Redux Toolkit', 'Redux-Saga', 'Fastify', 'Ant Design', 'AWS', 'Stripe', 'PayPal', 'CASL'],
+    links: [
+      { label: 'Lenny.ai', url: 'https://lenny.ai/' },
+      { label: 'Berti.ai', url: 'https://berti.ai/' },
+    ],
   },
   {
     company: 'Welkin Ring Digital Solutions',
@@ -124,6 +130,8 @@ export type Project = {
   tech: string[]
   liveUrl?: string
   githubUrl?: string
+  /** Demo videos (walkthrough, architecture, etc.) shown as links on the card. */
+  videos?: { label: string; url: string }[]
   accent: 'violet' | 'cyan'
 }
 
@@ -137,7 +145,10 @@ export const projects: Project[] = [
       'Containerized a **12-container stack** via Docker Compose on AWS EC2 with GitHub Actions CI/CD, and instrumented every service with **OpenTelemetry tracing (Tempo)**, Prometheus metrics, and Loki logging correlated via propagated request IDs.',
     ],
     tech: ['React 19', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'RabbitMQ', 'Redis', 'Docker', 'AWS', 'Prometheus', 'Grafana'],
-    githubUrl: 'https://github.com/anupam-singh88',
+    githubUrl: 'https://github.com/anupamsingh-engineer/blogify-microservices-app',
+    videos: [
+      { label: 'Product Walkthrough', url: 'https://drive.google.com/file/d/1NN2UMVwcI6mdU0oE1oAT_q8a_lekt8Lg/view?usp=sharing' },
+    ],
     accent: 'violet',
   },
   {
@@ -149,7 +160,11 @@ export const projects: Project[] = [
       'Deployed a production observability stack (**Prometheus, Grafana, Jaeger**) tracking **12+ custom business metrics**, with OpenTelemetry distributed tracing correlated to structured Pino logs via AsyncLocalStorage-propagated request/trace IDs.',
     ],
     tech: ['React', 'Node.js', 'Express', 'MongoDB', 'AWS S3/CloudFront', 'Redis', 'BullMQ', 'Docker', 'Prometheus', 'Grafana', 'Jaeger'],
-    githubUrl: 'https://github.com/anupam-singh88',
+    githubUrl: 'https://github.com/anupamsingh-engineer/NeoDrive',
+    videos: [
+      { label: 'Product Walkthrough', url: 'https://drive.google.com/file/d/1PwmXRT2v2z9mnZ46Cwt4PJQ9LLvCVpNm/view?usp=sharing' },
+      { label: 'Architecture Walkthrough', url: 'https://drive.google.com/file/d/1YF8-X5a8wxpagEOA-dA0iYF4nyTSeI6H/view?usp=sharing' },
+    ],
     accent: 'cyan',
   },
 ]

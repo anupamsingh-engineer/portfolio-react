@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { MapPin, TrendingUp } from 'lucide-react'
+import { MapPin, TrendingUp, ExternalLink } from 'lucide-react'
 import { experience } from '../data/resume'
 import { formatBold } from '../utils/formatBold'
 import SectionHeading from './SectionHeading'
@@ -43,6 +43,22 @@ export default function Experience() {
 
                 {job.subtitle && <p className="mt-2 text-sm italic text-mist-500">{job.subtitle}</p>}
 
+  {job.links && job.links.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {job.links.map((link) => (
+                      <a
+                        key={link.label}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-edge/10 bg-surface/[0.03] px-3 py-1.5 text-xs font-medium text-mist-300 transition-colors hover:border-violet-400/40 hover:text-mist-100"
+                      >
+                        <ExternalLink size={12} className="text-accent" />
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
                 {job.scale && (
                   <span className="mt-3 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/[0.06] px-3 py-1.5 font-mono text-xs text-accent">
                     <TrendingUp size={12} />
@@ -84,6 +100,8 @@ export default function Experience() {
                     </span>
                   ))}
                 </div>
+
+              
               </motion.div>
             ))}
           </div>
