@@ -17,7 +17,7 @@ export const profile = {
   githubHandle: 'anupamsingh-engineer',
   linkedin: 'https://www.linkedin.com/in/anupamsinghdev',
   linkedinHandle: 'anupamsinghdev',
-  site: 'https://anupam-mern-portfolio.vercel.app',
+  site: 'https://anupamsinghdev.vercel.app',
   resumeUrl: '/anupam_singh_resume.pdf',
   summary:
     'Full-Stack Developer with 4+ years architecting and scaling production web applications on the MERN stack and NestJS. Owns backend systems end-to-end — multi-provider API orchestration, multi-gateway subscription billing, revenue attribution, and role-based access control — alongside performant, production React frontends. Experienced across the full delivery lifecycle: system design, AWS deployment/observability, and Agile collaboration in distributed teams.',
