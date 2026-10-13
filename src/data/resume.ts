@@ -61,7 +61,7 @@ export const experience: Experience[] = [
     role: 'Software Engineer (Full Stack)',
     subtitle: 'BERTI.AI (multi-model AI platform) & scholarship-management platform',
     scale: '100K+ registered students · 220K+ applications submitted',
-    period: 'May 2023 — Present',
+    period: 'Aug 2023 — Present',
     groups: [
       {
         title: 'Multi-Provider AI Platform (BERTI.AI)',
