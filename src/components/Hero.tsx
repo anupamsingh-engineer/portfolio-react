@@ -122,8 +122,8 @@ export default function Hero() {
               transition={{ delay: 1, duration: 0.6 }}
               className="card-surface absolute -right-8 -top-6 rounded-xl px-4 py-3 shadow-xl shadow-black/40"
             >
-              <p className="font-mono text-[10px] uppercase tracking-wider text-mist-500">Endpoints shipped</p>
-              <p className="font-display text-xl font-semibold text-mist-50">70+</p>
+              <p className="font-mono text-[10px] uppercase tracking-wider text-mist-500">Students on platform</p>
+              <p className="font-display text-xl font-semibold text-mist-50">145K+</p>
             </motion.div>
 
             <motion.div
