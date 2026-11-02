@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/resume/:code", "destination": "https://job-outreach-frontend.vercel.app/api/rs/:code" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
